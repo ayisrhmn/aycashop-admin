@@ -10,13 +10,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Category</h1>
+          <h1>Banner</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/category">Category</a></li>
-            <li class="breadcrumb-item active">Edit Category</li>
+            <li class="breadcrumb-item"><a href="/banner">Banner</a></li>
+            <li class="breadcrumb-item active">Edit Banner</li>
           </ol>
         </div>
       </div>
@@ -30,20 +30,20 @@
         <div class="col-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Edit Category (<%= category.name %>)</h3>
+              <h3 class="card-title">Edit Banner (<%= banner.bannerName %>)</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="/category/edit/<%= category._id %>?_method=PUT" method="POST">
+            <form action="/banner/edit/<%= banner._id %>?_method=PUT" method="POST">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="name">Category</label>
-                  <input type="text" value="<%= category.name %>" name="name" class="form-control" id="name"
-                    placeholder="Enter category" required>
+                  <label for="bannerName">Banner Name</label>
+                  <input type="text" value="<%= banner.bannerName %>" name="bannerName" class="form-control"
+                    id="bannerName" placeholder="Enter banner name" required>
                 </div>
                 <div class="form-group">
                   <label for="filenameImage">Filename Image</label>
-                  <input type="text" value="<%= category.filenameImage %>" name="filenameImage" class="form-control"
+                  <input type="text" value="<%= banner.filenameImage %>" name="filenameImage" class="form-control"
                     id="filenameImage" placeholder="Enter filename image" required>
                 </div>
               </div>

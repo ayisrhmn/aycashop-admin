@@ -1,24 +1,24 @@
-const Transaction = require('../transaction/model');
-const Voucher = require('../voucher/model');
-const Player = require('../player/model');
+const Banner = require('../banner/model');
 const Category = require('../category/model');
+const ProductImage = require('../product-image/model');
+const Product = require('../product/model');
 
 module.exports = {
   index: async (req, res) => {
     try {
-      const transaction = await Transaction.countDocuments();
-      const voucher = await Voucher.countDocuments();
-      const player = await Player.countDocuments();
+      const banner = await Banner.countDocuments();
       const category = await Category.countDocuments();
+      const productImage = await ProductImage.countDocuments();
+      const product = await Product.countDocuments();
 
       res.render('index', {
         name: req.session.user.name,
         title: 'Dashboard',
         count: {
-          transaction,
-          voucher,
-          player,
+          banner,
           category,
+          productImage,
+          product,
         },
       });
     } catch (err) {

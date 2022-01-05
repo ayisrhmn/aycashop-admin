@@ -26,35 +26,27 @@ module.exports = {
   },
   actionSignIn: async (req, res) => {
     try {
-      const {email, password} = req.body;
-      const check = await User.findOne({email: email});
+      const {username, password} = req.body;
+      const check = await User.findOne({email: username});
 
       if (check) {
-        if (check.status === 'Y') {
-          const checkPassword = await bcrypt.compare(password, check.password);
+        const checkPassword = await bcrypt.compare(password, check.password);
 
-          if (checkPassword) {
-            req.session.user = {
-              id: check._id,
-              email: check.email,
-              status: check.status,
-              name: check.name,
-            }
-            res.redirect('/dashboard');
-          } else {
-            req.flash('alertMessage', 'Your password is not correct!');
-            req.flash('alertStatus', 'danger');
-
-            res.redirect('/');
+        if (checkPassword) {
+          req.session.user = {
+            id: check._id,
+            username: check.username,
+            name: check.name,
           }
+          res.redirect('/dashboard');
         } else {
-          req.flash('alertMessage', 'This user is not active!');
+          req.flash('alertMessage', 'Your password is not correct!');
           req.flash('alertStatus', 'danger');
 
           res.redirect('/');
         }
       } else {
-        req.flash('alertMessage', 'Email is not correct!');
+        req.flash('alertMessage', 'Username is not correct!');
         req.flash('alertStatus', 'danger');
 
         res.redirect('/');
