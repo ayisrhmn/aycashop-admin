@@ -1,4 +1,4 @@
-const Category = require('./model');
+const Banner = require('./model');
 
 module.exports = {
   index: async (req, res) => {
@@ -7,102 +7,102 @@ module.exports = {
       const alertStatus = req.flash('alertStatus');
 
       const alert = {message: alertMessage, status: alertStatus};
-      const category = await Category.find();
+      const banner = await Banner.find();
 
-      res.render('category/category', {
-        category,
+      res.render('banner/banner', {
+        banner,
         alert,
         name: req.session.user.name,
-        title: 'Category',
+        title: 'Banner',
       });
     } catch (err) {
       req.flash('alertMessage', `${err.message}`);
       req.flash('alertStatus', 'danger');
 
-      res.redirect('/category');
+      res.redirect('/banner');
     }
   },
   viewCreate: async (req, res) => {
     try {
-      res.render('category/create', {
+      res.render('banner/create', {
         name: req.session.user.name,
-        title: 'Add Category',
+        title: 'Add Banner',
       });
     } catch (err) {
       req.flash('alertMessage', `${err.message}`);
       req.flash('alertStatus', 'danger');
 
-      res.redirect('/category');
+      res.redirect('/banner');
     }
   },
   actionCreate: async (req, res) => {
     try {
-      const {name, filenameImage} = req.body;
+      const {bannerName, filenameImage} = req.body;
 
-      let category = await Category({name, filenameImage});
-      await category.save();
+      let banner = await Banner({bannerName, filenameImage});
+      await banner.save();
 
-      req.flash('alertMessage', 'Successfully add category!');
+      req.flash('alertMessage', 'Successfully add banner!');
       req.flash('alertStatus', 'success');
 
-      res.redirect('/category');
+      res.redirect('/banner');
     } catch (err) {
       req.flash('alertMessage', `${err.message}`);
       req.flash('alertStatus', 'danger');
 
-      res.redirect('/category');
+      res.redirect('/banner');
     }
   },
   viewEdit: async (req, res) => {
     try {
       const {id} = req.params;
-      const category = await Category.findOne({_id: id});
+      const banner = await Banner.findOne({_id: id});
 
-      res.render('category/edit', {
-        category,
+      res.render('banner/edit', {
+        banner,
         name: req.session.user.name,
-        title: 'Edit Category',
+        title: 'Edit Banner',
       });
     } catch (err) {
       req.flash('alertMessage', `${err.message}`);
       req.flash('alertStatus', 'danger');
 
-      res.redirect('/category');
+      res.redirect('/banner');
     }
   },
   actionEdit: async (req, res) => {
     try {
       const {id} = req.params;
-      const {name, filenameImage} = req.body;
+      const {bannerName, filenameImage} = req.body;
 
-      await Category.findOneAndUpdate({_id: id}, {name, filenameImage});
+      await Banner.findOneAndUpdate({_id: id}, {bannerName, filenameImage});
 
-      req.flash('alertMessage', 'Successfully update category!');
+      req.flash('alertMessage', 'Successfully update banner!');
       req.flash('alertStatus', 'success');
 
-      res.redirect('/category');
+      res.redirect('/banner');
     } catch (err) {
       req.flash('alertMessage', `${err.message}`);
       req.flash('alertStatus', 'danger');
 
-      res.redirect('/category');
+      res.redirect('/banner');
     }
   },
   actionDelete: async (req, res) => {
     try {
       const {id} = req.params;
 
-      await Category.findOneAndRemove({_id: id});
+      await Banner.findOneAndRemove({_id: id});
 
-      req.flash('alertMessage', 'Successfully delete category!');
+      req.flash('alertMessage', 'Successfully delete banner!');
       req.flash('alertStatus', 'success');
 
-      res.redirect('/category');
+      res.redirect('/banner');
     } catch (err) {
       req.flash('alertMessage', `${err.message}`);
       req.flash('alertStatus', 'danger');
 
-      res.redirect('/category');
+      res.redirect('/banner');
     }
   },
 };

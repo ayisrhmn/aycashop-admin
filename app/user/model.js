@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 let userSchema = mongoose.Schema(
   {
-    email: {
+    username: {
       type: String,
-      require: [true, 'Email must be filled!'],
+      require: [true, 'Username must be filled!'],
     },
     name: {
       type: String,
@@ -13,20 +13,6 @@ let userSchema = mongoose.Schema(
     password: {
       type: String,
       require: [true, 'Password must be filled!'],
-    },
-    role: {
-      type: String,
-      enum: ['admin', 'user'],
-      default: 'admin',
-    },
-    status: {
-      type: String,
-      enum: ['Y', 'N'],
-      default: 'Y',
-    },
-    phoneNumber: {
-      type: String,
-      require: [true, 'Phone Number must be filled!'],
     },
   },
   {timestamps: true},

@@ -2,7 +2,7 @@ module.exports = {
   index: async (_, res) => {
     try {
       res.status(200).json({
-        title: 'StoreGG Admin (Backend & API)',
+        title: 'Aycashop Admin (Backend & API)',
         message: 'alive',
       });
     } catch (err) {

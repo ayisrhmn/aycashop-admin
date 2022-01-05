@@ -6,6 +6,10 @@ let categorySchema = mongoose.Schema(
       type: String,
       require: [true, 'Category must be filled!'],
     },
+    filenameImage: {
+      type: String,
+      require: [true, 'Filename image must be filled!'],
+    },
   },
   {timestamps: true},
 );
