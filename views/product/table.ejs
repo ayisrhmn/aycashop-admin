@@ -3,7 +3,8 @@
     <tr>
       <th>No.</th>
       <th>Product Name</th>
-      <th>Product Image</th>
+      <th>Primary Image</th>
+      <th>Product Image Name</th>
       <th>Category</th>
       <th>Price (Rp.)</th>
       <th>Status New</th>
@@ -16,6 +17,9 @@
       <tr>
         <td><%= i + 1 %></td>
         <td><%= product[i].productName %></td>
+        <td>
+          <img src="https://cf.shopee.co.id/file/<%= product[i].productImage[0].filenameImage %>" style="width: 100px; height: 100px;">
+        </td>
         <td>
           <% product[i].productImage.forEach((image) => { %>
             <span class="badge badge-info">
