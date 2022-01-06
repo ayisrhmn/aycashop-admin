@@ -34,6 +34,10 @@ let productSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Category',
     },
+    link: {
+      type: String,
+      require: [true, 'Link must be filled!'],
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

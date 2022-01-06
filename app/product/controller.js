@@ -1,9 +1,6 @@
 const Product = require('./model');
 const Category = require('../category/model');
 const ProductImage = require('../product-image/model');
-const path = require('path');
-const fs = require('fs');
-const config = require('../../config');
 
 module.exports = {
   index: async (req, res) => {
@@ -54,7 +51,8 @@ module.exports = {
         productImage,
         category,
         price,
-        description
+        description,
+        link,
       } = req.body;
 
       const product = new Product({
@@ -63,6 +61,7 @@ module.exports = {
         category,
         price,
         description,
+        link,
         user: req.session.user.id,
       });
 
@@ -110,7 +109,8 @@ module.exports = {
         productImage,
         category,
         price,
-        description
+        description,
+        link,
       } = req.body;
 
       await Product.findOneAndUpdate({
@@ -121,6 +121,7 @@ module.exports = {
         category,
         price,
         description,
+        link,
         user: req.session.user.id,
       });
 

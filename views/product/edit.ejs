@@ -81,6 +81,11 @@
                     placeholder="Enter price" required>
                 </div>
                 <div class="form-group">
+                  <label for="link">Link</label>
+                  <input type="text" value="<%= product.link %>" name="link" class="form-control" id="link"
+                    placeholder="Enter link" required>
+                </div>
+                <div class="form-group">
                   <label for="summernote">Description</label>
                   <textarea id="summernote" name="description">
                     <%= product.description %>
