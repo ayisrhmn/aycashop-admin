@@ -11,3 +11,6 @@ Repo frontend
 - Node.js (Express.js)
 - MongoDB (Database)
 
+## Author
+
+Muhammad Fariz Rahman
